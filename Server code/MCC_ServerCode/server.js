@@ -21,7 +21,7 @@ wss.on('connection', function connection(ws) {
 	CLIENTS[ws.upgradeReq.connection.remoteAddress] = userCounter++;
 	const location = url.parse(ws.upgradeReq.url, true);
         ws.on('message', function incoming(message) {
-        if(message == 100){    //send me files please
+        if(message == 100){    //send me files 
         	console.log("100 got from client");
 			var fileName = "./userFolder/bundle.zip";
 
@@ -32,9 +32,7 @@ wss.on('connection', function connection(ws) {
 			        var buffer = new Buffer(stats.size);
 
 			        fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
-			          //var data = buffer.toString("utf8", 0, buffer.length);
 			           ws.send(buffer);
-			          //console.log(data);
 			          fs.close(fd);
 			        });
 			      });
