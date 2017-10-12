@@ -14,9 +14,7 @@ ws.on('open', function open(){
 			        console.log(Object.prototype.toString.apply(buffer));
 
 			        fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
-			          //var data = buffer.toString("utf8", 0, buffer.length);
 			           ws.send(buffer);
-			          //console.log(data);
 			          fs.close(fd);
 			        });
 			      });
@@ -37,7 +35,6 @@ ws.on('message', function incoming(data, flags){
 	}
 	else{
 			console.log(data);
-			//var data1 = data.toString("utf8", 0, data.length);
 			fs.writeFile('./clientFolder/bundle.zip',data, function(err){
 				if(err){
 					 console.log(err);
