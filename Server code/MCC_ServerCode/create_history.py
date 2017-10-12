@@ -1,3 +1,4 @@
+# python code to analyses the user's web history as provided by client(Android Application) 
 import json
 import urllib2
 import zipfile
